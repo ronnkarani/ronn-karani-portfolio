@@ -94,3 +94,10 @@ blogForm?.addEventListener('submit', function (e) {
     textarea.value = '';
   }
 });
+
+
+document.querySelector('.contact-form')?.addEventListener('submit', function (e) {
+  e.preventDefault();
+  alert('Thanks for your message, Ronny will get back to you soon!');
+  this.reset();
+});
