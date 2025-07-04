@@ -60,3 +60,37 @@ scrollBtn.onclick = function () {
     behavior: 'smooth'
   });
 };
+
+// Fake comment submission (no backend)
+const form = document.querySelector('.comment-form');
+const commentList = document.querySelector('.comment-list');
+
+form?.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const textarea = this.querySelector('textarea');
+  const comment = textarea.value.trim();
+  if (comment) {
+    const el = document.createElement('div');
+    el.classList.add('comment');
+    el.innerHTML = `<p><strong>You:</strong> ${comment}</p>`;
+    commentList.appendChild(el);
+    textarea.value = '';
+  }
+});
+
+
+const blogForm = document.querySelector('.comment-form');
+const blogCommentList = document.querySelector('.comment-list');
+
+blogForm?.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const textarea = this.querySelector('textarea');
+  const comment = textarea.value.trim();
+  if (comment) {
+    const el = document.createElement('div');
+    el.classList.add('comment');
+    el.innerHTML = `<p><strong>You:</strong> ${comment}</p>`;
+    blogCommentList.appendChild(el);
+    textarea.value = '';
+  }
+});

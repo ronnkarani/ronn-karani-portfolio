@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How I Built My Portfolio | Ronny Karani</title>
+  <link href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+  <div class="container nav__wrapper">
+    <div class="logo">Ronny</div>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon"><i class="uil uil-bars"></i></label>
+    <ul class="nav__links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav__icons">
+      <i class="uil uil-moon toggle-theme" id="themeToggle"></i>
+      <i class="uil uil-user login-icon" title="Login"></i>
+    </div>
+  </div>
+</header>
+
+  <!-- Blog Post -->
+  <main class="section blog-details">
+    <div class="container">
+      <h1 class="blog-title">🔧 How I Built My Portfolio</h1>
+      <div class="blog-meta">
+        <span><i class="uil uil-calendar-alt"></i> July 2025</span>
+        <span><i class="uil uil-user"></i> Ronny</span>
+        <span><i class="uil uil-eye"></i> 321 views</span>
+        <span><i class="uil uil-heart"></i> 45 likes</span>
+        <span><i class="uil uil-comment-alt"></i> 3 comments</span>
+      </div>
+
+      <img src="assets/blog1.jpg" alt="Blog Banner" class="blog-detail-image" />
+
+      <article class="blog-content">
+        <p>
+          I built this personal portfolio to showcase my work, skills, and journey as a full-stack developer. I started with basic HTML and CSS, then gradually introduced JavaScript animations and particles.js for flair.
+        </p>
+        <p>
+          The site includes sections for projects, blog posts, and contact, with a dark-themed UI and mobile responsiveness. I also used a modular approach to keep my codebase clean.
+        </p>
+        <h3>Key Features:</h3>
+        <ul>
+          <li>Particles.js animated background</li>
+          <li>Dark/light mode (coming soon)</li>
+          <li>Responsive layout using Flex/Grid</li>
+        </ul>
+      </article>
+
+      <!-- Comments Section -->
+      <div class="blog-comments">
+        <h3><i class="uil uil-comment-alt-lines"></i> Comments</h3>
+        <div class="comment-list">
+          <div class="comment">
+            <p><strong>Jane:</strong> This is such a clean portfolio — I’m inspired 👏</p>
+          </div>
+          <div class="comment">
+            <p><strong>DevGuy:</strong> Great breakdown of your stack, thanks for sharing!</p>
+          </div>
+        </div>
+
+        <form class="comment-form">
+          <textarea placeholder="Leave a comment..." required></textarea>
+          <button type="submit">Post Comment</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Ronny Karani. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

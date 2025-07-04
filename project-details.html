@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio Website | Ronny Karani</title>
+  <link href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+  <header class="navbar">
+  <div class="container nav__wrapper">
+    <div class="logo">Ronny</div>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon"><i class="uil uil-bars"></i></label>
+    <ul class="nav__links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav__icons">
+      <i class="uil uil-moon toggle-theme" id="themeToggle"></i>
+      <i class="uil uil-user login-icon" title="Login"></i>
+    </div>
+  </div>
+</header>
+
+  <!-- Project Details -->
+  <main class="section project-details">
+    <div class="container">
+      <h2 class="project-title">💻 Portfolio Website</h2>
+      <div class="project-meta">
+        <span><i class="uil uil-eye"></i> 143 views</span>
+        <span><i class="uil uil-heart"></i> 27 likes</span>
+        <span><i class="uil uil-comment-alt-lines"></i> 4 comments</span>
+      </div>
+
+      <img src="assets/portfolio.png" alt="Project Screenshot" class="project-detail-image"/>
+
+      <div class="project-description">
+        <h3>About This Project</h3>
+        <p>This personal portfolio was built using HTML, CSS, JavaScript, and particles.js for the animated background. It’s fully responsive and showcases my projects, blog, and contact details.</p>
+
+        <h4>Technologies Used:</h4>
+        <ul>
+          <li>HTML5</li>
+          <li>CSS3 + Flex/Grid</li>
+          <li>JavaScript + Particles.js</li>
+        </ul>
+
+        <a href="https://github.com/ronnkarani/portfolio" target="_blank" class="button">View Code</a>
+        <a href="https://yourdomain.com" target="_blank" class="button button--outline">Live Site</a>
+      </div>
+
+      <!-- Comments Section -->
+      <div class="project-comments">
+        <h3><i class="uil uil-comment-alt-lines"></i> Comments</h3>
+        
+        <div class="comment-list">
+          <div class="comment">
+            <p><strong>Jane Doe:</strong> This looks amazing! Clean and smooth 💯</p>
+          </div>
+          <div class="comment">
+            <p><strong>DevMike:</strong> Great layout and use of particles.js!</p>
+          </div>
+        </div>
+
+        <form class="comment-form">
+          <textarea placeholder="Leave a comment..." required></textarea>
+          <button type="submit">Post Comment</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Ronny Karani. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
