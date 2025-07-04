@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ronny Karani - Portfolio</title>
+  <link href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  
+</head>
+<body>
+
+    <!-- 🌟 Navbar -->
+     <header class="navbar">
+  <div class="container nav__wrapper">
+    <div class="logo">Ronny</div>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon"><i class="uil uil-bars"></i></label>
+    <ul class="nav__links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav__icons">
+      <i class="uil uil-moon toggle-theme" id="themeToggle"></i>
+      <i class="uil uil-user login-icon" title="Login"></i>
+    </div>
+  </div>
+</header>
+
+  <!-- ⭐️ Particle Background -->
+  <div id="particles-js"></div>
+
+  <!-- 💻 Hero Section -->
+  <section class="home section" id="home">
+    <div class="home__container container">
+      <div class="home__content">
+        <div class="home__text">
+          <h1>Hey there, I'm <span>Ronny Karani</span> 👨‍💻</h1>
+          <p>Crafting scalable full-stack solutions for real-world impact.</p>
+          <div class="home__buttons">
+            <a href="#projects" class="button">View Projects</a>
+              <a href="assets/Ronny_Karani_Resume.pdf" class="button button--outline" download>Download Resume</a>
+            <a href="#contact" class="button button--outline">Hire Me</a>
+          </div>
+          <div class="home__socials">
+            <a href="https://github.com/ronnkarani" target="_blank"><i class="uil uil-github"></i></a>
+            <a href="https://linkedin.com/in/ronnkarani" target="_blank"><i class="uil uil-linkedin"></i></a>
+            <a href="mailto:karanironny25@gmail.com"><i class="uil uil-envelope"></i></a>
+          </div>
+        </div>
+        <div class="home__image">
+          <img src="https://avatars.githubusercontent.com/u/00000000" alt="Ronny Karani" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- 🌐 Skills Section -->
+     <section class="timeline section" id="experience">
+  <div class="container">
+    <h2 class="section-title">My Journey</h2>
+    <div class="timeline-container">
+      
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>🎓 Bachelor of Science in Computer Science</h3>
+          <span>2020 – 2024, Catholic University of Eastern Africa</span>
+          <p>Focused on full-stack development, software engineering, and AI projects.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>💼 Freelance Developer</h3>
+          <span>2022 – Present</span>
+          <p>Built and deployed 10+ client websites using Django, React, and Firebase.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>🎖️ Python Developer Certificate</h3>
+          <span>2023 – Coursera</span>
+          <p>Completed a professional certificate in Python and backend web APIs.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- 📂 Projects Section -->
+    <section class="projects section" id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Portfolio Website</h3>
+                    <p>A personal portfolio built with HTML, CSS, JavaScript and particles.js background.</p>
+                    <div class="project-links">
+                        <a href="https://yourprojectlink.com" target="_blank">View Project</a>
+                        <a href="https://yourprojectlink.com/details" target="_blank" class="more-info">More Info</a>
+                    </div>
+
+                </div>
+
+                <div class="project-card">
+                    <h3>Portfolio Website</h3>
+                    <p>A personal portfolio built with HTML, CSS, JavaScript and particles.js background.</p>
+                    <div class="project-links">
+                        <a href="https://yourprojectlink.com" target="_blank">View Project</a>
+                        <a href="https://yourprojectlink.com/details" target="_blank" class="more-info">More Info</a>
+                    </div>
+
+                </div>
+
+      <div class="project-card">
+        <h3>Blog Platform</h3>
+        <p>A Django-powered blog with authentication, markdown support, and clean UI.</p>
+        <div class="project-links">
+  <a href="https://yourprojectlink.com" target="_blank">View Project</a>
+  <a href="https://yourprojectlink.com/details" target="_blank" class="more-info">More Info</a>
+</div>
+
+      </div>
+
+      <div class="project-card">
+        <h3>Task Manager App</h3>
+        <p>A simple task manager using React and Firebase for real-time updates.</p>
+        <div class="project-links">
+  <a href="https://yourprojectlink.com" target="_blank">View Project</a>
+  <a href="https://yourprojectlink.com/details" target="_blank" class="more-info">More Info</a>
+</div>
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+    <!-- 📝 Blog Section -->
+    <section class="blogs section" id="blog">
+  <div class="container">
+    <h2 class="section-title">Latest Blog Posts</h2>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <h3>How I Built My Portfolio</h3>
+        <p>Behind-the-scenes of designing and coding this site from scratch using HTML, CSS, and JavaScript.</p>
+        <a href="https://yourbloglink.com/article-1" target="_blank">Read More</a>
+      </div>
+
+      <div class="blog-card">
+        <h3>My Journey into Full-Stack Development</h3>
+        <p>From learning Python to deploying full web apps — the roadmap and lessons I picked up along the way.</p>
+        <a href="https://yourbloglink.com/article-2" target="_blank">Read More</a>
+      </div>
+
+      <div class="blog-card">
+        <h3>Top 5 Tools I Use as a Developer</h3>
+        <p>These tools power my daily workflow and help me stay efficient, creative, and productive.</p>
+        <a href="https://yourbloglink.com/article-3" target="_blank">Read More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- 🚀 Script -->
+  <script src="js/script.js"></script>
+
+  <!-- Scroll to Top Button -->
+<button id="scrollTopBtn" title="Go to top">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 Ronny Karani. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
+
