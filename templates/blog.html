@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Blog | Ronny Karani{% endblock %}
+
+{% block content %}
+<!-- 📝 Blog Section -->
+<section class="section blog-page" id="blog">
+  <div class="container">
+    <h2 class="section-title">My Blog 📝</h2>
+    <div class="blog-grid">
+      {% for post in blog_posts %}
+      <div class="blog-card">
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="blog-image"/>
+        <h3>{{ post.icon }} {{ post.title }}</h3>
+        <p>{{ post.excerpt }}</p>
+        <div class="blog-meta">
+          <span><i class="uil uil-calendar-alt"></i> {{ post.date }}</span>
+          <span><i class="uil uil-user"></i> {{ post.author }}</span>
+        </div>
+        <a href="{% url 'blog_detail' post.slug %}" class="read-more">Read More</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

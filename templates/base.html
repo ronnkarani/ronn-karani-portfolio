@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}👨‍💻 Ronny Karani - Portfolio{% endblock %}</title>
+  <link href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
+  <script src="{% static 'js/script.js' %}" defer></script>
+</head>
+<body>
+
+      <!-- 🌟 Navbar -->
+  {% include 'includes/navbar.html' %}
+
+
+  <!-- ⭐ Particle Background -->
+  <div id="particles-js"></div>
+
+  <!-- Main Content Block -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- 🚀 Scroll to Top -->
+  <button id="scrollTopBtn" title="Go to top">
+    <i class= "uil uil-arrow-up"></i>
+  </button>
+
+    {% include 'includes/footer.html' %}
+
+</body>
+</html>

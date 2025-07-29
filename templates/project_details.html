@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ project.title }} | Ronny Karani{% endblock %}
+
+{% block content %}
+<main class="section project-details">
+  <div class="container">
+    <h2 class="project-title">{{ project.title }}</h2>
+    <div class="project-meta">
+      <span><i class="uil uil-calendar-alt"></i> {{ project.created_at }}</span>
+    </div>
+
+    <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-detail-image"/>
+
+    <div class="project-description">
+      <p>{{ project.description }}</p>
+      <h4>Technologies Used:</h4>
+      <ul>
+        {% for tech in project.tech_list %}
+          <li>{{ tech }}</li>
+        {% endfor %}
+      </ul>
+
+      <a href="{{ project.repo_url }}" target="_blank" class="button">View Code</a>
+      <a href="{{ project.live_url }}" target="_blank" class="button button--outline">Live Site</a>
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ blog.title }} | Ronny Karani{% endblock %}
+
+{% block content %}
+<main class="section blog-details">
+  <div class="container">
+    <h1 class="blog-title">{{ blog.title }}</h1>
+
+    <div class="blog-meta">
+      <span><i class="uil uil-calendar-alt"></i> {{ blog.created_at }}</span>
+      <span><i class="uil uil-user"></i> {{ blog.author }}</span>
+    </div>
+
+    <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="blog-detail-image"/>
+
+    <article class="blog-content">
+      <p>{{ blog.content }}</p>
+    </article>
+  </div>
+</main>
+{% endblock %}
