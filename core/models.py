@@ -45,6 +45,14 @@ class BlogPost(models.Model):
     def __str__(self):
         return self.title
 
+class Skill(models.Model):
+    icon = models.CharField(max_length=10, help_text="Emoji or Icon")
+    category = models.CharField(max_length=100, help_text="Category e.g. Frontend")
+    stack = models.TextField(help_text="Tech stack or description")
+
+    def __str__(self):
+        return f"{self.icon} {self.category}"
+    
 class Comment(models.Model):
     name = models.CharField(max_length=100)
     content = models.TextField()
@@ -57,10 +65,3 @@ class Comment(models.Model):
     def __str__(self):
         return f"Comment by {self.name}"
 
-class Skill(models.Model):
-    icon = models.CharField(max_length=10, help_text="Emoji or Icon")
-    category = models.CharField(max_length=100, help_text="Category e.g. Frontend")
-    stack = models.TextField(help_text="Tech stack or description")
-
-    def __str__(self):
-        return f"{self.icon} {self.category}"
