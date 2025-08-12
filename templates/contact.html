@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contact | Ronny Karani{% endblock %}
+
+{% block content %}
+<!-- ☎️ Contact Section -->
+<main class="section contact-page" id="contact">
+  <div class="container">
+    <h2 class="section-title">Get In Touch ☎️</h2>
+    <p class="section-subtitle">
+      I'd love to hear from you! Whether you have a question, want to collaborate, need tech solutions or just want to say hi, feel free to reach out.
+    </p>
+    <br>
+    <p class="section-subtitle">Have an idea? Need a system? Let's build something incredible.</p>
+
+    <div class="contact-wrapper">
+      <!-- Contact Form -->
+      <form class="contact-form" method="POST" action="{% url 'send_message' %}">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h3>Contact Info</h3>
+        <p><i class="uil uil-envelope"></i> karanironny25@gmail.com</p>
+        <p><i class="uil uil-location-point"></i> Kenya, East Africa</p>
+
+        <div class="contact-socials">
+          <a href="https://github.com/ronnkarani" target="_blank"><i class="uil uil-github"></i></a>
+          <a href="https://linkedin.com/in/ronnkarani" target="_blank"><i class="uil uil-linkedin"></i></a>
+          <a href="https://x.com/ronnkarani" target="_blank"><i class="uil uil-twitter"></i></a>
+          <a href="https://instagram.com/ronnkarani" target="_blank"><i class="uil uil-instagram"></i></a>
+          <a href="https://www.facebook.com/ronnkarani" target="_blank"><i class="uil uil-facebook-f"></i></a>
+          <a href="mailto:karanironny25@gmail.com"><i class="uil uil-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

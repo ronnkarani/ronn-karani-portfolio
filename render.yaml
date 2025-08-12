@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: django-portfolio
+    env: python
+    plan: free
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+    startCommand: gunicorn portfolio_site.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: portfolio_site.settings
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: SECRET_KEY
+        value: 'django-insecure-6njy2zw_=xc$p380%e-diuv)i^85*&@&1*m=yj*nyy750nqxoi'
+      - key: DEBUG
+        value: False

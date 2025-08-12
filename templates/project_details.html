@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ project.title }} | Ronny Karani{% endblock %}
+
+{% block content %}
+<main class="section project-details">
+  <div class="container">
+    <h2 class="project-title">{{ project.title }}</h2>
+    <div class="project-meta">
+      <span><i class="uil uil-calendar-alt"></i> {{ project.created_at }}</span>
+            <span><i class="uil uil-eye"></i> {{ project.views }} views</span>
+      <span>
+  <form method="POST" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" name="like" title="Like this project" style="all:unset; cursor:pointer;">
+      <i class="uil uil-heart"></i>
+    </button>
+    <span class="like-count">{{ project.likes }}</span> likes
+  </form>
+</span>
+
+    </div>
+
+    <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-detail-image"/>
+
+    <div class="project-description">
+      {{ project.description|safe }}
+      <h4>Technologies Used:</h4>
+      <ul>
+        {% for tech in project.tech_list %}
+          <li>{{ tech }}</li>
+        {% endfor %}
+      </ul>
+
+      <a href="{{ project.repo_url }}" target="_blank" class="button">View Code</a>
+      <a href="{{ project.live_url }}" target="_blank" class="button button--outline">Live Site</a>
+    </div>
+    <!-- Comments Section (optional static) -->
+    <div class="project-comments">
+      <h3><i class="uil uil-comment-alt-lines"></i> Comments</h3>
+      <div class="comment-list">
+        <div class="comment"><p><strong>Jane:</strong> This looks amazing!</p></div>
+        <div class="comment"><p><strong>Mike:</strong> Clean UI and nice tech stack.</p></div>
+      </div>
+
+      <form class="comment-form">
+        <textarea placeholder="Leave a comment..." required></textarea>
+        <button type="submit">Post Comment</button>
+      </form>
+    </div>
+  </div>
+</main>
+{% endblock %}

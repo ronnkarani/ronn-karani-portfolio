@@ -1,0 +1,19 @@
+<header class="navbar">
+  <div class="container nav__wrapper">
+    <a href="{% url 'home' %}" class="logo-link">
+  <div class="logo">💻 Ronny</div>
+  </a>
+
+    <input type="checkbox" id="menu-toggle" />
+    <label for="menu-toggle" class="menu-icon"><i class="uil uil-bars"></i></label>
+    <ul class="nav__links">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'projects' %}">Projects</a></li>
+      <li><a href="{% url 'blog' %}">Blog</a></li>
+      <li><a href="{% url 'contact' %}">Contact</a></li>
+    </ul>
+    <div class="nav__icons">
+      <i class="uil uil-user login-icon" title="Login"></i>
+    </div>
+  </div>
+</header>
