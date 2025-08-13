@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.utils.text import Truncator
 
 # Create your models here.
 class Project(models.Model):
@@ -29,7 +30,7 @@ class Project(models.Model):
 class BlogPost(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True)
-    excerpt = models.TextField()
+    excerpt = models.TextField(blank=True)
     content = RichTextUploadingField()
     image = models.ImageField(upload_to='blogs/')
     author = models.CharField(max_length=100, default="Ronny")
@@ -40,6 +41,10 @@ class BlogPost(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+        # auto-generate excerpt if empty
+        if not self.excerpt:
+            plain_text = self.content.replace("<p>", "").replace("</p>", "")  # remove HTML tags roughly
+            self.excerpt = Truncator(plain_text).words(30)  # first 30 words
         super().save(*args, **kwargs)
 
     def __str__(self):

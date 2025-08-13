@@ -14,7 +14,7 @@ def home(request):
 
 def blog(request):
     posts = BlogPost.objects.order_by('-created_at')
-    paginator = Paginator(posts, 2)  
+    paginator = Paginator(posts, 4)  
     page_number = request.GET.get('page')
     blog_posts = paginator.get_page(page_number)
     return render(request, "blog.html", {"blog_posts": blog_posts})
@@ -47,7 +47,7 @@ def blog_detail(request, slug):
 
 def projects(request):
     project_list = Project.objects.order_by('-created_at')
-    paginator = Paginator(project_list, 2) 
+    paginator = Paginator(project_list, 4) 
     page_number = request.GET.get('page')
     projects = paginator.get_page(page_number)
     return render(request, "projects.html", {"projects": projects})
