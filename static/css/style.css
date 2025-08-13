@@ -28,6 +28,11 @@ h1 {
   z-index: -1;
 }
 
+#particles-js {
+  pointer-events: none; /* <-- allow clicks through canvas */
+}
+
+
 /* Navbar */
 .navbar {
   width: 100%;
@@ -97,6 +102,160 @@ h1 {
 
 #menu-toggle {
   display: none;
+}
+
+.user-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.dropdown-arrow {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+  color: #f0f0f0;
+}
+
+.user-dropdown .dropdown-content {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background-color: #1e1e1e;
+  min-width: 160px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 2000;
+}
+
+.user-dropdown .dropdown-content a {
+  display: block;
+  color: #f0f0f0;
+  padding: 12px 16px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.user-dropdown .dropdown-content a:hover {
+  background-color: #3a3a3a;
+}
+
+/* Active state triggered by click */
+.user-dropdown .dropdown-content.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-arrow.rotated {
+  transform: rotate(180deg);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .user-dropdown .dropdown-content {
+    right: 10px;
+    top: 35px;
+    min-width: 140px;
+  }
+}
+
+
+/* Ensure dropdown is above mobile menu */
+.user-dropdown .dropdown-content {
+  z-index: 1001; /* higher than menu */
+}
+
+/* Hamburger menu adjustments */
+.nav__links {
+  display: flex;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .nav__links {
+    position: fixed;
+    top: 0;
+    right: -100%; /* hide offscreen */
+    width: 200px;
+    height: 100%;
+    flex-direction: column;
+    background-color: #1e1e1e;
+    padding-top: 60px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+  }
+
+  #menu-toggle:checked ~ .nav__links {
+    right: 0; /* slide in menu */
+  }
+
+  .nav__icons {
+    display: flex;
+    gap: 15px;
+    position: relative;
+  }
+}
+
+
+.auth-container {
+  max-width: 400px;
+  margin: 100px auto;
+  background: #1e1e1e;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  color: #fff;
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #58a6ff;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-container input {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background: #0d0d0d;
+  color: #fff;
+}
+
+.auth-container button {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #58a6ff;
+  color: #0d0d0d;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.auth-container button:hover {
+  background: #1f6feb;
+}
+
+.auth-container a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+.auth-container a:hover {
+  text-decoration: underline;
 }
 
 /* Responsive Nav */

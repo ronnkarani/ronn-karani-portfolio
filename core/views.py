@@ -3,6 +3,9 @@ from .models import Project, BlogPost, Skill, Comment
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.core.mail import send_mail
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+from django.contrib.auth.views import LoginView
 
 # Create your views here.
 def home(request):
@@ -12,6 +15,30 @@ def home(request):
 
     return render(request, 'home.html', {'projects': projects,'blog_posts': blog, 'skills': skills,
 })
+
+
+def signup_view(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)  # log the user in immediately
+            return redirect('home')
+    else:
+        form = UserCreationForm()
+    return render(request, 'signup.html', {'form': form})
+
+
+class CustomLoginView(LoginView):
+    template_name = 'login.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        # ✅ Add this at the very top of dispatch
+        if request.user.is_authenticated:
+            return redirect('home')  # redirect logged-in users to home
+        return super().dispatch(request, *args, **kwargs)
 
 def blog(request):
     posts = BlogPost.objects.order_by('-created_at')

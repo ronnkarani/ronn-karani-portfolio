@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}💻 Sign Up{% endblock %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <div class="auth-container">
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Username</label>
+        <input type="text" name="username" required id="username">
+
+        <label for="password">Password</label>
+        <input type="password" name="password" required id="password">
+
+        <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+    </div>
+
+{% endblock %}

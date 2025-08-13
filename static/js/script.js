@@ -59,3 +59,35 @@ scrollTopBtn.addEventListener("click", () => {
 });
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  const userDropdown = document.querySelector('.user-dropdown');
+  if (!userDropdown) return;
+
+  const dropdownContent = userDropdown.querySelector('.dropdown-content');
+  const arrow = userDropdown.querySelector('.dropdown-arrow');
+  const menuToggle = document.getElementById('menu-toggle');
+
+  const toggleDropdown = (e) => {
+    e.stopPropagation();
+    dropdownContent.classList.toggle('active');
+    arrow.classList.toggle('rotated');
+  };
+
+  userDropdown.addEventListener('click', toggleDropdown);
+
+  // Close when clicking outside
+  document.addEventListener('click', () => {
+    dropdownContent.classList.remove('active');
+    arrow.classList.remove('rotated');
+  });
+
+  // Optional: close dropdown when mobile menu closes
+  if (menuToggle) {
+    menuToggle.addEventListener('change', () => {
+      if (!menuToggle.checked) {
+        dropdownContent.classList.remove('active');
+        arrow.classList.remove('rotated');
+      }
+    });
+  }
+});
