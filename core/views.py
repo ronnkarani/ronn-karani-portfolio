@@ -1,9 +1,10 @@
-
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Project, BlogPost, Skill, Comment
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.core.mail import send_mail
 
+# Create your views here.
 def home(request):
     projects = Project.objects.order_by('-created_at')[:4] 
     blog = BlogPost.objects.order_by('-created_at')[:4]  
@@ -86,7 +87,15 @@ def send_message(request):
         name = request.POST.get("name")
         email = request.POST.get("email")
         message = request.POST.get("message")
-        print("Message received:", name, email, message)
-        # Optional: add logic to email/save/etc.
+
+        subject = f"Portfolio Contact Form - {name}"
+        body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+
+        send_mail(
+            subject,
+            body,
+            'karanironny25@gmail.com',    # From your Gmail
+            ['karanironny25@gmail.com'],  # To yourself
+            fail_silently=False,
+        )
         return redirect("contact")
-    return redirect("contact")

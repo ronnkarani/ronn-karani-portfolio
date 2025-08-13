@@ -12,14 +12,16 @@
         <div class="project-card">
           <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-image"/>
           <h3><a href="{% url 'project_details' project.slug %}" style="text-decoration: none;">
-        {{ project.title }}
-      </a></h3>
+            {{ project.title }}
+          </a></h3>
           <p>{{ project.description|truncatewords:30|safe }}</p>
           <div class="project-links">
             {% if project.repo_url %}<a href="{{ project.repo_url }}" target="_blank">View Code</a>{% endif %}
             {% if project.live_url %}<a href="{{ project.live_url }}" target="_blank">Live Site</a>{% endif %}
             <a href="{% url 'project_details' project.slug %}" class="more-info">More Info</a>
           </div>
+          {% empty %}
+        <p>No skills available yet.</p>
         </div>
       {% endfor %}
 

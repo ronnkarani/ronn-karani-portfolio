@@ -21,6 +21,8 @@
         </div>
         <a href="{% url 'blog_detail' post.slug %}" class="read-more">Read More</a>
       </div>
+      {% empty %}
+        <p>No skills available yet.</p>
       {% endfor %}
     </div>
     

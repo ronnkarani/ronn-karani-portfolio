@@ -95,6 +95,8 @@
             {% if project.live_url %}<a href="{{ project.live_url }}" target="_blank">View Project</a>{% endif %}
             <a href="{% url 'project_details' project.slug %}" class="more-info">More Info</a>
           </div>
+          {% empty %}
+        <p>No skills available yet.</p>
         </div>
       {% endfor %}
     </div>
