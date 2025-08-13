@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Projects | Ronny Karani{% endblock %}
+{% block title %}👨‍💻 Projects {% endblock %}
 
 {% block content %}
 <main class="section projects-page">
@@ -20,9 +20,10 @@
             {% if project.live_url %}<a href="{{ project.live_url }}" target="_blank">Live Site</a>{% endif %}
             <a href="{% url 'project_details' project.slug %}" class="more-info">More Info</a>
           </div>
-          {% empty %}
-        <p>No skills available yet.</p>
+          
         </div>
+        {% empty %}
+        <p>No skills available yet.</p>
       {% endfor %}
 
     </div>
