@@ -11,16 +11,17 @@
     <div class="blog-meta">
       <span><i class="uil uil-calendar-alt"></i> {{ blog.created_at }}</span>
       <span><i class="uil uil-user"></i> {{ blog.author }}</span>
-      <span><i class="uil uil-eye"></i> {{ blog.views }} views</span>
+      <span><i class="uil uil-eye"></i> {{ blog.views }} Views</span>
       <span>
-  <form method="POST" style="display:inline;">
-    {% csrf_token %}
-    <button type="submit" name="like" title="Like this post" style="all:unset; cursor:pointer;">
-      <i class="uil uil-heart"></i>
-    </button>
-    <span class="like-count">{{ blog.likes }}</span> likes
-  </form>
-</span>
+        <form method="POST" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit" name="like" title="Like this post" style="all:unset; cursor:pointer;">
+            <i class="uil uil-heart"></i>
+          </button>
+          <span class="like-count">{{ blog.likes }} Likes</span> 
+        </form>
+      </span>
+      <span><i class="uil uil-comment-alt-lines"></i> {{ blog.comments.count }} Comments</h3></span>
 
     </div>
 
@@ -33,14 +34,14 @@
     
     <!-- Comments Section (static for now) -->
 <div class="blog-comments">
-  <h3><i class="uil uil-comment-alt-lines"></i> Comments</h3>
+  <h3><i class="uil uil-comment-alt-lines"></i> {{ blog.comments.count }} Comments</h3>
   {% for comment in comments %}
     <div class="comment"><p><strong>{{ comment.name }}:</strong> {{ comment.content }}</p></div>
   {% empty %}
     <p>No comments yet.</p>
   {% endfor %}
 
-  <h3><i class="uil uil-comment-alt-lines"></i> Leave a Comment</h3>
+  <h3><i class="uil uil-comment-alt-lines"></i> Leave a Comment!</h3>
    <form method="POST" class="comment-form">
     {% csrf_token %}
     <div class="form-group">

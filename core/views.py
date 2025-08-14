@@ -6,6 +6,7 @@ from django.core.mail import send_mail
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LogoutView
 
 # Create your views here.
 def home(request):
@@ -39,6 +40,13 @@ class CustomLoginView(LoginView):
         if request.user.is_authenticated:
             return redirect('home')  # redirect logged-in users to home
         return super().dispatch(request, *args, **kwargs)
+
+
+class CustomLogoutView(LogoutView):
+    # allow GET requests
+    http_method_names = ['get', 'post']
+    next_page = '/'  # redirect to home after logout
+
 
 def blog(request):
     posts = BlogPost.objects.order_by('-created_at')

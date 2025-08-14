@@ -14,10 +14,12 @@
         <img src="{{ post.image.url }}" alt="{{ post.title }}" class="blog-image"/>
         <h3>{{ post.icon }} <a href="{% url 'blog_detail' post.slug %}" style="text-decoration: none;">
         {{ post.title }}</h3>
-        <p>{{ post.excerpt|truncatewords:30 }}</p>
+        <p>{{ post.excerpt|truncatewords:30|safe }}</p>
         <div class="blog-meta">
-          <span><i class="uil uil-calendar-alt"></i> {{ post.date }}</span>
+          <span><i class="uil uil-calendar-alt"></i> {{ post.created_at }}</span>
           <span><i class="uil uil-user"></i> {{ post.author }}</span>
+          <span class="like-count"><i class="uil uil-heart"></i> {{ post.likes }} Likes</span> 
+          <span><i class="uil uil-comment-alt-lines"></i> {{ post.comments.count }} Comments</h3></span>
         </div>
         <a href="{% url 'blog_detail' post.slug %}" class="read-more">Read More</a>
       </div>

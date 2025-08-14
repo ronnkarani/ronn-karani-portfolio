@@ -136,6 +136,10 @@ CKEDITOR_CONFIGS = {
     }
 }
 
+# settings.py
+LOGOUT_REDIRECT_URL = '/'  # or 'home' if using named URL
+
+
 #EMAIL SETTINGS
 # Email Settings for Gmail
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
