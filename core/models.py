@@ -4,6 +4,22 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.text import Truncator
 
 # Create your models here.
+class SocialLink(models.Model):
+    PLATFORM_CHOICES = [
+        ("facebook", "Facebook"),
+        ("twitter", "Twitter"),
+        ("linkedin", "LinkedIn"),
+        ("github", "GitHub"),
+        ("instagram", "Instagram"),
+        ("youtube", "YouTube"),
+    ]
+
+    platform = models.CharField(max_length=50, choices=PLATFORM_CHOICES)
+    url = models.URLField()
+
+    def __str__(self):
+        return f"{self.get_platform_display()} - {self.url}"
+    
 class Project(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True)

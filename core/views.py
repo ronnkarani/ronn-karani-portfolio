@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Project, BlogPost, Skill, Comment
+from .models import Project, BlogPost, Skill, Comment, SocialLink
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.core.mail import send_mail
@@ -10,11 +10,12 @@ from django.contrib.auth.views import LogoutView
 
 # Create your views here.
 def home(request):
+    social_links = SocialLink.objects.all()
     projects = Project.objects.order_by('-created_at')[:4] 
     blog = BlogPost.objects.order_by('-created_at')[:4]  
     skills = Skill.objects.all()
 
-    return render(request, 'home.html', {'projects': projects,'blog_posts': blog, 'skills': skills,
+    return render(request, 'home.html', {"social_links": social_links, 'projects': projects,'blog_posts': blog, 'skills': skills,
 })
 
 

@@ -21,10 +21,12 @@
         </div>
 
         <div class="home__socials">
-          {% for platform, url in social_links.items %}
-            <a href="{{ url }}" target="_blank"><i class="uil uil-{{ platform }}"></i></a>
-          {% endfor %}
-        </div>
+              {% for link in social_links %}
+                <a href="{{ link.url }}" target="_blank">
+                  <i class="uil uil-{{ link.platform }}"></i>
+                </a>
+              {% endfor %}
+            </div>
       </div>
 
       <div class="home__image">
