@@ -8,15 +8,18 @@
   <div class="container home__container">
     <div class="home__content">
       <div class="home__text">
-        <h1>Hi 👋, I'm <span>Ronny Karani</span> 👨‍💻</h1>
-        <p>A Full-Stack Software Engineer | Building Scalable, Impact-Driven Digital Solutions</p>
-        <p>With a background in software, hardware, and digital innovation, I focus on scalable solutions for everyday problems.</p>
-        <p>5+ Years of Full-Stack Experience • Over 20+ Satisfied Clients • Proven Delivery of Scalable Systems</p>
+        <h1>{{ hero.greeting|safe }} <span><b>{{ hero.name }}</b></span> {{ hero.emoji }}</h1>
+        <p>{{ hero.headline|safe }}</p>
+        <p>{{ hero.subtext_1|safe }}</p>
+        <p>{{ hero.subtext_2|safe }}</p>
+        <p>{{ hero.subtext_3|safe }}</p>
 
         <div class="home__buttons">
           <a href="{% url 'projects' %}" class="button">View Projects</a>
-          <a href="{% static 'files/Ronny-Karani-Resume.docx' %}" class="button button--outline" download="Ronny-Karani-Resume.docx" target="_blank" 
-          rel="noopener noreferrer">Download Resume</a>
+          
+           {% if hero.resume %}
+            <a href="{{ hero.resume.url }}" class="button button--outline" download target="_blank" rel="noopener noreferrer">Download Resume</a>
+          {% endif %}
           <a href="{% url 'contact' %}" class="button button--outline">Hire Me</a>
         </div>
 
@@ -29,8 +32,8 @@
             </div>
       </div>
 
-      <div class="home__image">
-        <img src="{% static 'images/ron.jpeg' %}" alt="Ronny Karani" />
+<div class="home__image">
+        <img src="{{ hero.profile_image.url }}" alt="{{ hero.name }}" />
       </div>
     </div>
   </div>
@@ -39,23 +42,19 @@
 <!-- 📂 About Section -->
 <section class="section" id="about">
   <div class="container">
-    <h2 class="section-title">About Me 📂</h2>
+    <h2 class="section-title"> {{ about.title }} </h2>
     <div class="project-grid">
       <div class="project-card">
-        <h3>✨ “Creative Developer • Tech Visionary”</h3>
-        <p>🛠️ I’m a Full-Stack Engineer from Kenya specializing in building scalable systems. My work ranges from property management platforms to educational systems, with a track record of delivering high-performance, user-focused solutions.</p>
-        <p>🚀 With a passion for technology and a knack for problem-solving, I create innovative solutions that make a difference. My journey spans software engineering, digital innovation, and community impact.</p>
-        <p>🌍 I believe in the power of technology to transform lives and communities. My mission is to build impactful digital solutions that solve real-world problems.</p>
+        <h3>{{ about.tagline|safe }}</h3>
+        <p>🛠️ {{ about.description_1|safe }}</p>
+        <p>🚀 {{ about.description_2|safe }}</p>
+        <p>🌍 {{ about.description_3|safe }}</p>
       </div>
 
       <div class="project-card">
-        <h3>🛸 Tech Stack</h3>
-        <p><b>Frontend:</b> HTML, CSS, Tailwind, Bootstrap, React</p>
-        <p><b>Backend:</b> Django, Node.js, TypeScript</p>
-        <p><b>Mobile:</b> React Nativ</p>
-        <p><b>Databases:</b> PostgreSQL, SQLite, MongoDB, Firebase</p>
-        <p><b>Deployment:</b> Netlify, Render, AWS, Heroku</p>
-        <p><b>Others:</b> Email Integration, Payments, SEO, Docker, GitHub</p>
+        <h3><em>🛸 Tech Stack</em></h3>
+        <p>{{ about.tech_stack|safe }}</p>
+        
       </div>
     </div>
   </div>
@@ -64,12 +63,12 @@
 <!-- 💼 Skills Section -->
 <section class="section" id="skills">
   <div class="container">
-    <h2 class="section-title">What I Do 🎀</h2>
+    <h2 class="section-title">🎀 What I Do </h2>
     <div class="project-grid">
       {% for skill_group in skills %}
         <div class="project-card">
           <h3>{{ skill_group.icon }} <b>{{ skill_group.category }}</b></h3>
-          <p>{{ skill_group.stack }}</p>
+          <p>{{ skill_group.stack|safe}}</p>
         </div>
          {% empty %}
         <p>No skills available yet.</p>
@@ -81,7 +80,7 @@
 <!-- 🧪 Projects Section -->
 <section class="section" id="projects">
   <div class="container">
-    <h2 class="section-title">Projects 📚</h2>
+    <h2 class="section-title">📚 Projects </h2>
     <div class="project-grid">
       {% for project in projects %}
         <div class="project-card">
@@ -105,6 +104,8 @@
           </div>
         
         </div>
+        {% empty %}
+        <p>No projects available.</p>
       {% endfor %}
     </div>
   </div>
@@ -113,7 +114,7 @@
 <!-- 📝 Blog Section -->
 <section class="section" id="blog">
   <div class="container">
-    <h2 class="section-title">Latest Blog Posts 📝</h2>
+    <h2 class="section-title">📝 Blog Posts </h2>
     <div class="blog-grid">
       {% for post in blog_posts %}
         <div class="blog-card">

@@ -4,6 +4,40 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.text import Truncator
 
 # Create your models here.
+class Hero(models.Model):
+    greeting = models.CharField(max_length=255, default="Hi 👋, I'm")
+    name = models.CharField(max_length=255, default="Ronny Karani")
+    emoji = models.CharField(max_length=10, default="👨‍💻", blank=True, null=True)
+    headline = RichTextUploadingField(blank=True, null=True, max_length=255, default="A Full-Stack Software Engineer, Building Scalable &  Impact-Driven Digital Solutions")
+    subtext_1 = RichTextUploadingField(blank=True, null=True)
+    subtext_2 = RichTextUploadingField(blank=True, null=True)
+    subtext_3 = RichTextUploadingField(blank=True, null=True)
+
+    resume = models.FileField(upload_to="resumes/", blank=True, null=True)
+    profile_image = models.ImageField(upload_to="hero/", default="ron.jpeg", blank=True, null=True)
+
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Hero Section ({self.name})"
+
+class About(models.Model):
+    title = models.CharField(max_length=255, default="📂 About Me ")
+    tagline = RichTextUploadingField(max_length=255, blank=True, null=True)  # “Creative Developer • Tech Visionary”
+    description_1 = RichTextUploadingField(blank=True, null=True)
+    description_2 = RichTextUploadingField(blank=True, null=True)
+    description_3 = RichTextUploadingField(blank=True, null=True)
+
+    tech_stack = RichTextUploadingField(
+        help_text="Enter tech stack details in plain text or HTML (e.g., <b>Frontend:</b> React, Tailwind)",
+        blank=True,
+        null=True
+    )
+
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"About Section (Last updated: {self.updated_at.date()})"
 class SocialLink(models.Model):
     PLATFORM_CHOICES = [
         ("facebook", "Facebook"),
@@ -46,7 +80,7 @@ class Project(models.Model):
 class BlogPost(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True)
-    excerpt = models.TextField(blank=True)
+    excerpt = models.TextField(blank=True, null=True)
     content = RichTextUploadingField()
     image = models.ImageField(upload_to='blogs/')
     author = models.CharField(max_length=100, default="Ronny")
@@ -69,7 +103,7 @@ class BlogPost(models.Model):
 class Skill(models.Model):
     icon = models.CharField(max_length=10, help_text="Emoji or Icon")
     category = models.CharField(max_length=100, help_text="Category e.g. Frontend")
-    stack = models.TextField(help_text="Tech stack or description")
+    stack = RichTextUploadingField(help_text="Tech stack or description")
 
     def __str__(self):
         return f"{self.icon} {self.category}"

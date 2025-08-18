@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Project, BlogPost, Skill, Comment, SocialLink
+from .models import Project, BlogPost, Skill, Comment, SocialLink, About, Hero
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.core.mail import send_mail
@@ -7,15 +7,18 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.views import LogoutView
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
+    hero = Hero.objects.last()
+    about = About.objects.last()
     social_links = SocialLink.objects.all()
     projects = Project.objects.order_by('-created_at')[:4] 
     blog = BlogPost.objects.order_by('-created_at')[:4]  
     skills = Skill.objects.all()
 
-    return render(request, 'home.html', {"social_links": social_links, 'projects': projects,'blog_posts': blog, 'skills': skills,
+    return render(request, 'home.html', {"hero": hero, "about": about, "social_links": social_links, 'projects': projects,'blog_posts': blog, 'skills': skills,
 })
 
 
@@ -127,11 +130,16 @@ def send_message(request):
         subject = f"Portfolio Contact Form - {name}"
         body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
 
-        send_mail(
-            subject,
-            body,
-            'karanironny25@gmail.com',    # From your Gmail
-            ['karanironny25@gmail.com'],  # To yourself
-            fail_silently=False,
-        )
+        try:
+            send_mail(
+                subject,
+                body,
+                'karanironny25@gmail.com',    # From
+                ['karanironny25@gmail.com'],  # To
+                fail_silently=False,
+            )
+            messages.success(request, "✅ Your message has been sent successfully. I'll get back to you soon!")
+        except Exception as e:
+            messages.error(request, "❌ Oops! Something went wrong. Please try again later.")
+
         return redirect("contact")

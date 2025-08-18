@@ -244,6 +244,25 @@ h1 {
   }
 }
 
+.messages {
+  margin-bottom: 15px;
+}
+.alert {
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.alert-success {
+  background: #e6ffed;
+  color: #056608;
+  border: 1px solid #b7f5c5;
+}
+.alert-error {
+  background: #ffe6e6;
+  color: #8a0000;
+  border: 1px solid #f5b7b7;
+}
+
 
 /* Hero Section */
 .home.section {

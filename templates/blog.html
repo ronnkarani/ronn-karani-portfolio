@@ -7,12 +7,12 @@
 <!-- 📝 Blog Section -->
 <section class="section blog-page" id="blog">
   <div class="container">
-    <h2 class="section-title">My Blog 📝</h2>
+    <h2 class="section-title">📝 My Blog </h2>
     <div class="blog-grid">
       {% for post in blog_posts %}
       <div class="blog-card">
         <img src="{{ post.image.url }}" alt="{{ post.title }}" class="blog-image"/>
-        <h3>{{ post.icon }} <a href="{% url 'blog_detail' post.slug %}" style="text-decoration: none;">
+        <h3>{{ post.icon }} <a href="{% url 'blog_detail' post.slug %}" style="text-decoration: none;"></a>
         {{ post.title }}</h3>
         <p>{{ post.excerpt|truncatewords:30|safe }}</p>
         <div class="blog-meta">
@@ -24,7 +24,7 @@
         <a href="{% url 'blog_detail' post.slug %}" class="read-more">Read More</a>
       </div>
       {% empty %}
-        <p>No skills available yet.</p>
+        <p>No blog posts available yet.</p>
       {% endfor %}
     </div>
     
