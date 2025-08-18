@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Project, BlogPost, Skill, Comment, SocialLink, About, Hero
+from .models import Project, BlogPost, Skill, Comment, SocialLink, About, Hero, Testimonial
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.core.mail import send_mail
@@ -17,8 +17,9 @@ def home(request):
     projects = Project.objects.order_by('-created_at')[:4] 
     blog = BlogPost.objects.order_by('-created_at')[:4]  
     skills = Skill.objects.all()
+    testimonials = Testimonial.objects.all()
 
-    return render(request, 'home.html', {"hero": hero, "about": about, "social_links": social_links, 'projects': projects,'blog_posts': blog, 'skills': skills,
+    return render(request, 'home.html', {"hero": hero, "about": about, "social_links": social_links, 'projects': projects,'blog_posts': blog, 'skills': skills, "testimonials": testimonials,
 })
 
 

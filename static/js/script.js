@@ -91,3 +91,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  // ✅ Initialize Swiper
+  const swiper = new Swiper(".mySwiper", {
+    loop: true,
+    autoplay: {
+      delay: 4000,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+
+  // ✅ Make all slides same height
+  const slides = document.querySelectorAll(".swiper-slide");
+  let maxHeight = 0;
+
+  slides.forEach(slide => {
+    maxHeight = Math.max(maxHeight, slide.offsetHeight);
+  });
+
+  slides.forEach(slide => {
+    slide.style.height = maxHeight + "px";
+  });
+});

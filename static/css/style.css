@@ -973,6 +973,127 @@ h1 {
   background-color: #090080;
 }
 
+.testimonial-section {
+  background: #1a1a1a;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.testimonial-heading {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.swiper {
+  max-width: 900px;
+  margin: auto;
+  padding-bottom: 3rem;
+  display: flex;
+  align-items: stretch
+}
+
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1; 
+  height: auto;
+  background: #222;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+.swiper-slide:hover {
+  transform: translateY(-5px);
+}
+
+.testimonial-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 2px solid #ddd;
+}
+
+.testimonial-text {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.testimonial-name {
+  font-weight: bold;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .testimonial-heading {
+    font-size: 1.6rem;
+  }
+
+  .testimonial-text {
+    font-size: 0.95rem;
+  }
+
+  .swiper-slide {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-heading {
+    font-size: 1.4rem;
+  }
+
+  .testimonial-text {
+    font-size: 0.9rem;
+  }
+
+  .testimonial-img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.swiper {
+  max-width: 1100px;
+  margin: auto;
+  padding-bottom: 3rem;
+}
+
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #222;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+.swiper-slide:hover {
+  transform: translateY(-5px);
+}
+
+/* Override Swiper nav button colors */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+}
+
+.swiper-pagination-bullet {
+  background: #fff;
+}
+
 
 .footer {
   background: #0d0d0d;

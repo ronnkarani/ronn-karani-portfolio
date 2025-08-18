@@ -138,5 +138,36 @@
   </div>
 </section>
 
+<!-- 🎙️ Testimonial Section-->
+<section class="testimonial-section">
+  <h2 class="testimonial-heading">🎙️ Testimonials</h2>
+
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {% for t in testimonials %}
+        <div class="swiper-slide">
+          {% if t.image %}
+            <img src="{{ t.image.url }}" alt="{{ t.name }}" class="testimonial-img">
+          {% else %}
+            <img src="{% static 'images/ron.jpeg' %}" alt="avatar" class="testimonial-img">
+          {% endif %}
+          <p class="testimonial-name">- {{ t.name }}, {{ t.role }}</p>
+          <p class="testimonial-text">"{{ t.message|safe }}"</p>
+          
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <!-- Pagination dots -->
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+
+
 
 {% endblock %}
