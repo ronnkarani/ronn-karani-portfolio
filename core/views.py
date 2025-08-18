@@ -119,7 +119,10 @@ def project_detail(request, slug):
 
 
 def contact(request):
-    return render(request, "contact.html")
+    social_links = SocialLink.objects.all()
+
+    return render(request, "contact.html", {"social_links": social_links,
+})
 
 def send_message(request):
     if request.method == "POST":
