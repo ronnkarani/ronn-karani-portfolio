@@ -62,7 +62,7 @@ class Project(models.Model):
     technologies = models.TextField(help_text="Comma-separated list")
     repo_url = models.URLField(blank=True, null=True)
     live_url = models.URLField(blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateField(auto_now_add=True)
     views = models.PositiveIntegerField(default=0)
     likes = models.PositiveIntegerField(default=0)
 
