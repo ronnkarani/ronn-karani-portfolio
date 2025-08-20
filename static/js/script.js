@@ -91,33 +91,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+const carousel = document.querySelector('.testimonial-carousel');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
 
-document.addEventListener("DOMContentLoaded", () => {
-  // ✅ Initialize Swiper
-  const swiper = new Swiper(".mySwiper", {
-    loop: true,
-    autoplay: {
-      delay: 4000,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
+let isDragging = false;
+let startX, scrollLeft;
 
-  // ✅ Make all slides same height
-  const slides = document.querySelectorAll(".swiper-slide");
-  let maxHeight = 0;
+// Arrow buttons
+nextBtn.addEventListener('click', () => {
+  carousel.scrollBy({ left: 320, behavior: 'smooth' });
+});
 
-  slides.forEach(slide => {
-    maxHeight = Math.max(maxHeight, slide.offsetHeight);
-  });
+prevBtn.addEventListener('click', () => {
+  carousel.scrollBy({ left: -320, behavior: 'smooth' });
+});
 
-  slides.forEach(slide => {
-    slide.style.height = maxHeight + "px";
-  });
+// Mouse drag
+carousel.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  startX = e.pageX - carousel.offsetLeft;
+  scrollLeft = carousel.scrollLeft;
+});
+
+carousel.addEventListener('mouseleave', () => {
+  isDragging = false;
+});
+
+carousel.addEventListener('mouseup', () => {
+  isDragging = false;
+});
+
+carousel.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const x = e.pageX - carousel.offsetLeft;
+  const walk = (x - startX) * 2; // scroll-fast
+  carousel.scrollLeft = scrollLeft - walk;
+});
+
+// Touch events for mobile
+carousel.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].pageX - carousel.offsetLeft;
+  scrollLeft = carousel.scrollLeft;
+});
+
+carousel.addEventListener('touchmove', (e) => {
+  const x = e.touches[0].pageX - carousel.offsetLeft;
+  const walk = (x - startX) * 2;
+  carousel.scrollLeft = scrollLeft - walk;
 });

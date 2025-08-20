@@ -46,9 +46,9 @@
     <div class="project-grid">
       <div class="project-card">
         <h3>{{ about.tagline|safe }}</h3>
-        <p>🛠️ {{ about.description_1|safe }}</p>
-        <p>🚀 {{ about.description_2|safe }}</p>
-        <p>🌍 {{ about.description_3|safe }}</p>
+        <p> {{ about.description_1|safe }}</p>
+        <p> {{ about.description_2|safe }}</p>
+        <p> {{ about.description_3|safe }}</p>
       </div>
 
       <div class="project-card">
@@ -138,36 +138,36 @@
   </div>
 </section>
 
-<!-- 🎙️ Testimonial Section-->
-<section class="testimonial-section">
-  <h2 class="testimonial-heading">🎙️ Testimonials</h2>
-
-  <div class="swiper">
-    <div class="swiper-wrapper">
-      {% for t in testimonials %}
-        <div class="swiper-slide">
-          {% if t.image %}
-            <img src="{{ t.image.url }}" alt="{{ t.name }}" class="testimonial-img">
-          {% else %}
-            <img src="{% static 'images/ron.jpeg' %}" alt="avatar" class="testimonial-img">
+<!-- 🌟 Testimonial Section -->
+<section class="testimonials section" id="testimonials">
+  <div class="testimonial-container">
+    <h2 class="section-title">What Our Clients Say 💬</h2>
+    <div class="testimonial-carousel">
+      {% for testimonial in testimonials %}
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <!-- Left side: text -->
+          <div class="testimonial-text">
+            <h4>{{ testimonial.name }}</h4>
+            {% if testimonial.role %}
+              <small>{{ testimonial.role }}</small>
+            {% endif %}
+            <p>{{ testimonial.message|safe }}</p>
+          </div>
+          <!-- Right side: image -->
+          {% if testimonial.image %}
+          <div class="testimonial-img">
+            <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}">
+          </div>
           {% endif %}
-          <p class="testimonial-name">- {{ t.name }}, {{ t.role }}</p>
-          <p class="testimonial-text">"{{ t.message|safe }}"</p>
-          
         </div>
+      </div>
       {% endfor %}
     </div>
-
-    <!-- Navigation buttons -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-
-    <!-- Pagination dots -->
-    <div class="swiper-pagination"></div>
+    <div class="carousel-buttons">
+      <button id="prev">❮</button>
+      <button id="next">❯</button>
+    </div>
   </div>
 </section>
-
-
-
-
 {% endblock %}
