@@ -137,7 +137,8 @@ CKEDITOR_CONFIGS = {
 }
 
 # settings.py
-LOGOUT_REDIRECT_URL = '/'  # or 'home' if using named URL
+LOGOUT_REDIRECT_URL = 'home'  # or 'home' if using named URL
+LOGIN_REDIRECT_URL = 'home'
 
 
 #EMAIL SETTINGS
