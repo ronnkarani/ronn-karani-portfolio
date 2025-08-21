@@ -970,13 +970,54 @@ h1 {
 }
 
 #scrollTopBtn:hover {
-  background-color: #090080;
+  background-color: rgb(3, 63, 88);;
 }
 .testimonial-container {
   max-width: 1200px;
   margin: auto;
   padding: 0 1rem;
 }
+
+/* Stats Section */
+.stats-section {
+  margin-top: 3rem;
+  padding: 2rem 0;
+}
+
+/* Stats Section */
+.stats {
+  display: flex;
+  justify-content: center;  /* keeps them centered */
+  align-items: center;
+  text-align: center;
+  gap: 3rem; /* adjust spacing between items */
+}
+
+.stat i {
+  font-size: 2rem;
+  color: #58a6ff;
+  margin-bottom: 0.5rem;
+}
+
+.stat h3 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0.3rem 0;
+}
+
+.stat p {
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .stats {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
 
 .testimonial-carousel {
   display: flex;

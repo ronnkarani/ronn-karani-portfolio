@@ -3,171 +3,193 @@
 {% block title %}💻 Home{% endblock %}
 {% block content %}
 
-<!-- 💻 Hero Section -->
-<section id="home" class="home section">
-  <div class="container home__container">
-    <div class="home__content">
-      <div class="home__text">
-        <h1>{{ hero.greeting|safe }} <span><b>{{ hero.name }}</b></span> {{ hero.emoji }}</h1>
-        <p>{{ hero.headline|safe }}</p>
-        <p>{{ hero.subtext_1|safe }}</p>
-        <p>{{ hero.subtext_2|safe }}</p>
-        <p>{{ hero.subtext_3|safe }}</p>
+    <!-- 💻 Hero Section -->
+    <section id="home" class="home section">
+      <div class="container home__container">
+        <div class="home__content">
+          <div class="home__text">
+            <h1>{{ hero.greeting|safe }} <span><b>{{ hero.name }}</b></span> {{ hero.emoji }}</h1>
+            <p>{{ hero.headline|safe }}</p>
+            <p>{{ hero.subtext_1|safe }}</p>
+            <p>{{ hero.subtext_2|safe }}</p>
+            <p>{{ hero.subtext_3|safe }}</p>
 
-        <div class="home__buttons">
-          <a href="{% url 'projects' %}" class="button">View Projects</a>
-          
-           {% if hero.resume %}
-            <a href="{{ hero.resume.url }}" class="button button--outline" download target="_blank" rel="noopener noreferrer">Download Resume</a>
-          {% endif %}
-          <a href="{% url 'contact' %}" class="button button--outline">Hire Me</a>
-        </div>
-
-        <div class="home__socials">
-              {% for link in social_links %}
-                <a href="{{ link.url }}" target="_blank">
-                  <i class="uil uil-{{ link.platform }}"></i>
-                </a>
-              {% endfor %}
+            <div class="home__buttons">
+              <a href="{% url 'projects' %}" class="button">View Projects</a>
+              
+              {% if hero.resume %}
+                <a href="{{ hero.resume.url }}" class="button button--outline" download target="_blank" rel="noopener noreferrer">Download Resume</a>
+              {% endif %}
+              <a href="{% url 'contact' %}" class="button button--outline">Hire Me</a>
             </div>
-      </div>
 
-<div class="home__image">
-        <img src="{{ hero.profile_image.url }}" alt="{{ hero.name }}" />
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 📂 About Section -->
-<section class="section" id="about">
-  <div class="container">
-    <h2 class="section-title"> {{ about.title }} </h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h3>{{ about.tagline|safe }}</h3>
-        <p> {{ about.description_1|safe }}</p>
-        <p> {{ about.description_2|safe }}</p>
-        <p> {{ about.description_3|safe }}</p>
-      </div>
-
-      <div class="project-card">
-        <h3><em>🛸 Tech Stack</em></h3>
-        <p>{{ about.tech_stack|safe }}</p>
-        
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 💼 Skills Section -->
-<section class="section" id="skills">
-  <div class="container">
-    <h2 class="section-title">🎀 What I Do </h2>
-    <div class="project-grid">
-      {% for skill_group in skills %}
-        <div class="project-card">
-          <h3>{{ skill_group.icon }} <b>{{ skill_group.category }}</b></h3>
-          <p>{{ skill_group.stack|safe}}</p>
-        </div>
-         {% empty %}
-        <p>No skills available yet.</p>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<!-- 🧪 Projects Section -->
-<section class="section" id="projects">
-  <div class="container">
-    <h2 class="section-title">📚 Projects </h2>
-    <div class="project-grid">
-      {% for project in projects %}
-        <div class="project-card">
-          <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-detail-image"/>
-          <h3>
-            <a href="{% url 'project_details' project.slug %}" style="text-decoration: none;">
-            {{ project.title }}
-          </a>
-          </h3>
-          <p>{{ project.description|truncatewords:30|safe }}</p>
-          <div class="project-meta">
-            <span><i class="uil uil-eye"></i> {{ project.views }} Views</span> 
-            <span class="like-count"><i class="uil uil-heart"></i> {{ project.likes }} Likes</span> 
-            <span><i class="uil uil-comment-alt-lines"></i> {{project.comments.count}} Comments</span> 
-
+            <div class="home__socials">
+                  {% for link in social_links %}
+                    <a href="{{ link.url }}" target="_blank">
+                      <i class="uil uil-{{ link.platform }}"></i>
+                    </a>
+                  {% endfor %}
+                </div>
           </div>
-          <div class="project-links">
-            {% if project.repo_url %}<a href="{{ project.repo_url }}" target="_blank">View Code</a>{% endif %}
-            {% if project.live_url %}<a href="{{ project.live_url }}" target="_blank">View Project</a>{% endif %}
-            <a href="{% url 'project_details' project.slug %}" class="more-info">More Info</a>
-          </div>
-        
-        </div>
-        {% empty %}
-        <p>No projects available.</p>
-      {% endfor %}
-    </div>
-  </div>
-</section>
 
-<!-- 📝 Blog Section -->
-<section class="section" id="blog">
-  <div class="container">
-    <h2 class="section-title">📝 Blog Posts </h2>
-    <div class="blog-grid">
-      {% for post in blog_posts %}
-        <div class="blog-card">
-          <img src="{{ post.image.url }}" alt="{{ post.title }}" class="project-image" />
-          <h3><a href="{% url 'blog_detail' post.slug %}" style="text-decoration: none;">
-            {{ post.title }}
-          </a></h3>
-          <p>{{ post.excerpt|truncatewords:30|safe }}</p>
-          <div class="blog-meta">
-          <span><i class="uil uil-calendar-alt"></i> {{ post.created_at }}</span>
-          <span><i class="uil uil-user"></i> {{ post.author }}</span>
-          <span class="like-count"><i class="uil uil-heart"></i> {{ post.likes }} Likes</span> 
-          <span><i class="uil uil-comment-alt-lines"></i> {{ post.comments.count }} Comments</h3></span>
-        </div>
-          <a href="{% url 'blog_detail' post.slug %}" target="_blank">Read More</a>
-        </div>
-      {% empty %}
-        <p>No blog posts available.</p>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<!-- 🌟 Testimonial Section -->
-<section class="testimonials section" id="testimonials">
-  <div class="testimonial-container">
-    <h2 class="section-title">What Our Clients Say 💬</h2>
-    <div class="testimonial-carousel">
-      {% for testimonial in testimonials %}
-      <div class="testimonial-card">
-        <div class="testimonial-content">
-          <!-- Left side: text -->
-          <div class="testimonial-text">
-            <h4>{{ testimonial.name }}</h4>
-            {% if testimonial.role %}
-              <small>{{ testimonial.role }}</small>
-            {% endif %}
-            <p>{{ testimonial.message|safe }}</p>
+    <div class="home__image">
+            <img src="{{ hero.profile_image.url }}" alt="{{ hero.name }}" />
           </div>
-          <!-- Right side: image -->
-          {% if testimonial.image %}
-          <div class="testimonial-img">
-            <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}">
-          </div>
-          {% endif %}
         </div>
       </div>
-      {% endfor %}
-    </div>
-    <div class="carousel-buttons">
-      <button id="prev">❮</button>
-      <button id="next">❯</button>
-    </div>
-  </div>
-</section>
+    </section>
+
+    <!-- 📂 About Section -->
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="section-title"> {{ about.title }} </h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <h3><em>{{ about.tagline|safe }}</em></h3>
+            <p> {{ about.description_1|safe }}</p>
+            <p> {{ about.description_2|safe }}</p>
+            <p> {{ about.description_3|safe }}</p>
+          </div>
+
+          <div class="project-card">
+            <h3><em>🛸 Tech Stack</em></h3>
+            <p>{{ about.tech_stack|safe }}</p>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="stats">
+        <div class="stat">
+          <i class="uil uil-users-alt"></i>
+          <h3>30+</h3>
+          <p>Clients Served</p>
+        </div>
+        <div class="stat">
+          <i class="uil uil-check-circle"></i>
+          <h3>40+</h3>
+          <p>Projects Completed</p>
+        </div>
+        <div class="stat">
+          <i class="uil uil-award"></i>
+          <h3>100%</h3>
+          <p>Satisfaction Guaranteed</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 💼 Skills Section -->
+    <section class="section" id="skills">
+      <div class="container">
+        <h2 class="section-title">🎀 What I Do </h2>
+        <div class="project-grid">
+          {% for skill_group in skills %}
+            <div class="project-card">
+              <h3>{{ skill_group.icon }} <b>{{ skill_group.category }}</b></h3>
+              <p>{{ skill_group.stack|safe}}</p>
+            </div>
+            {% empty %}
+            <p>No skills available yet.</p>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- 🧪 Projects Section -->
+    <section class="section" id="projects">
+      <div class="container">
+        <h2 class="section-title">📚 Projects </h2>
+        <div class="project-grid">
+          {% for project in projects %}
+            <div class="project-card">
+              <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-detail-image"/>
+              <h3>
+                <a href="{% url 'project_details' project.slug %}" style="text-decoration: none;">
+                {{ project.title }}
+              </a>
+              </h3>
+              <p>{{ project.description|truncatewords:30|safe }}</p>
+              <div class="project-meta">
+                <span><i class="uil uil-eye"></i> {{ project.views }} Views</span> 
+                <span class="like-count"><i class="uil uil-heart"></i> {{ project.likes }} Likes</span> 
+                <span><i class="uil uil-comment-alt-lines"></i> {{project.comments.count}} Comments</span> 
+
+              </div>
+              <div class="project-links">
+                {% if project.repo_url %}<a href="{{ project.repo_url }}" target="_blank">View Code</a>{% endif %}
+                {% if project.live_url %}<a href="{{ project.live_url }}" target="_blank">View Project</a>{% endif %}
+                <a href="{% url 'project_details' project.slug %}" class="more-info">More Info</a>
+              </div>
+            
+            </div>
+            {% empty %}
+            <p>No projects available.</p>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- 📝 Blog Section -->
+    <section class="section" id="blog">
+      <div class="container">
+        <h2 class="section-title">📝 Blog Posts </h2>
+        <div class="blog-grid">
+          {% for post in blog_posts %}
+            <div class="blog-card">
+              <img src="{{ post.image.url }}" alt="{{ post.title }}" class="project-image" />
+              <h3><a href="{% url 'blog_detail' post.slug %}" style="text-decoration: none;">
+                {{ post.title }}
+              </a></h3>
+              <p>{{ post.excerpt|truncatewords:30|safe }}</p>
+              <div class="blog-meta">
+              <span><i class="uil uil-calendar-alt"></i> {{ post.created_at }}</span>
+              <span><i class="uil uil-user"></i> {{ post.author }}</span>
+              <span class="like-count"><i class="uil uil-heart"></i> {{ post.likes }} Likes</span> 
+              <span><i class="uil uil-comment-alt-lines"></i> {{ post.comments.count }} Comments</h3></span>
+            </div>
+              <a href="{% url 'blog_detail' post.slug %}" target="_blank">Read More</a>
+            </div>
+          {% empty %}
+            <p>No blog posts available.</p>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- 🌟 Testimonial Section -->
+    <section class="testimonials section" id="testimonials">
+      <div class="testimonial-container">
+        <h2 class="section-title">💬 What Our Clients Say </h2>
+        <div class="testimonial-carousel">
+          {% for testimonial in testimonials %}
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <!-- Left side: text -->
+              <div class="testimonial-text">
+                <h4>{{ testimonial.name }}</h4>
+                {% if testimonial.role %}
+                  <small>{{ testimonial.role }}</small>
+                {% endif %}
+                <p>{{ testimonial.message|safe }}</p>
+              </div>
+              <!-- Right side: image -->
+              {% if testimonial.image %}
+              <div class="testimonial-img">
+                <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}">
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="carousel-buttons">
+          <button id="prev">❮</button>
+          <button id="next">❯</button>
+        </div>
+      </div>
+    </section>
 {% endblock %}

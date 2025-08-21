@@ -15,7 +15,10 @@
     <p class="section-subtitle">Have an idea? Need a system? Let's build something incredible.</p>
 
     <div class="contact-wrapper">
-      <!-- Contact Form -->
+      
+
+      <form class="contact-form" method="POST" action="{% url 'send_message' %}">
+        <!-- Contact Form -->
       {% if messages %}
   <div class="messages">
     {% for message in messages %}
@@ -25,8 +28,6 @@
     {% endfor %}
   </div>
 {% endif %}
-
-      <form class="contact-form" method="POST" action="{% url 'send_message' %}">
         {% csrf_token %}
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
