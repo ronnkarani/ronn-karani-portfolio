@@ -60,6 +60,24 @@
       </div>
     </section>
 
+
+    <!-- 💼 Skills Section -->
+    <section class="section" id="skills">
+      <div class="container">
+        <h2 class="section-title">🎀 What I Do </h2>
+        <div class="project-grid">
+          {% for skill_group in skills %}
+            <div class="project-card">
+              <h3>{{ skill_group.icon }} <b>{{ skill_group.category }}</b></h3>
+              <p>{{ skill_group.stack|safe}}</p>
+            </div>
+            {% empty %}
+            <p>No skills available yet.</p>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
     <!-- Stats Section -->
     <section class="stats-section">
       <div class="stats">
@@ -77,24 +95,6 @@
           <i class="uil uil-award"></i>
           <h3>100%</h3>
           <p>Satisfaction Guaranteed</p>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 💼 Skills Section -->
-    <section class="section" id="skills">
-      <div class="container">
-        <h2 class="section-title">🎀 What I Do </h2>
-        <div class="project-grid">
-          {% for skill_group in skills %}
-            <div class="project-card">
-              <h3>{{ skill_group.icon }} <b>{{ skill_group.category }}</b></h3>
-              <p>{{ skill_group.stack|safe}}</p>
-            </div>
-            {% empty %}
-            <p>No skills available yet.</p>
-          {% endfor %}
         </div>
       </div>
     </section>
