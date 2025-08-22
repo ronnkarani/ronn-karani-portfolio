@@ -1087,9 +1087,9 @@ h1 {
 }
 
 .testimonial-stars i {
-  color: #f5c518; /* golden stars */
+  color: #FFD700; /* golden */
   font-size: 1rem;
-  margin: 0 2px;
+  margin: 0 1px;
 }
 
 /* Carousel buttons */

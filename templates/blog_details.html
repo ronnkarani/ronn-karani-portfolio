@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load image_filters %}
 
 {% block title %}👨‍💻{{ blog.title }}{% endblock %}
 
@@ -25,7 +26,10 @@
 
     </div>
 
-    <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="blog-detail-image"/>
+         <picture>
+      <source srcset="{{ blog.image|webp }}" type="image/webp">
+      <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="blog-detail-image" loading="lazy" decoding="async">
+    </picture>
 
     <article class="blog-content">
       {{ blog.content|safe }}

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load image_filters %}
 {% block title %}💻 Home{% endblock %}
 {% block content %}
 
@@ -33,7 +34,11 @@
           </div>
 
     <div class="home__image">
-            <img src="{{ hero.profile_image.url }}" alt="{{ hero.name }}" />
+            
+            <picture>
+          <source srcset="{{ hero.profile_image|webp }}" type="image/webp">
+          <img src="{{ hero.profile_image.url }}" alt="{{ hero.name }}" loading="lazy" decoding="async" />
+        </picture>
           </div>
         </div>
       </div>
@@ -106,7 +111,10 @@
         <div class="project-grid">
           {% for project in projects %}
             <div class="project-card">
-              <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-detail-image"/>
+               <picture>
+            <source srcset="{{ project.image|webp }}" type="image/webp">
+            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-detail-image" loading="lazy" decoding="async"/>
+          </picture>
               <h3>
                 <a href="{% url 'project_details' project.slug %}" style="text-decoration: none;">
                 {{ project.title }}
@@ -140,7 +148,10 @@
         <div class="blog-grid">
           {% for post in blog_posts %}
             <div class="blog-card">
-              <img src="{{ post.image.url }}" alt="{{ post.title }}" class="project-image" />
+              <picture>
+                <source srcset="{{ post.image|webp }}" type="image/webp">
+                <img src="{{ post.image.url }}" alt="{{ post.title }}" class="blog-image" loading="lazy" decoding="async">
+              </picture>
               <h3><a href="{% url 'blog_detail' post.slug %}" style="text-decoration: none;">
                 {{ post.title }}
               </a></h3>
@@ -176,27 +187,39 @@
                 {% endif %}
                 <p>{{ testimonial.message|safe }}</p>
               </div>
-              <!-- Right side: image -->
+
+              <!-- Right side: image + stars -->
               {% if testimonial.image %}
               <div class="testimonial-img">
-                <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}">
+                <picture>
+                  <source srcset="{{ testimonial.image|webp }}" type="image/webp">
+                  <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}" loading="lazy" decoding="async">
+                </picture>
+                
                 <div class="testimonial-stars">
-                  <i class="uil uil-star"></i>
-                  <i class="uil uil-star"></i>
-                  <i class="uil uil-star"></i>
-                  <i class="uil uil-star"></i>
-                  <i class="uil uil-star"></i>
+                  {% with ''|center:5 as range %}
+                    {% for _ in range %}
+                      {% if forloop.counter <= testimonial.rating %}
+                        <i class="fas fa-star text-yellow-500"></i> <!-- filled star -->
+                      {% else %}
+                        <i class="far fa-star text-yellow-500"></i> <!-- outline star -->
+                      {% endif %}
+                    {% endfor %}
+                  {% endwith %}
                 </div>
+
               </div>
               {% endif %}
             </div>
           </div>
           {% endfor %}
         </div>
+
         <div class="carousel-buttons">
           <button id="prev">❮</button>
           <button id="next">❯</button>
         </div>
       </div>
     </section>
+
 {% endblock %}
