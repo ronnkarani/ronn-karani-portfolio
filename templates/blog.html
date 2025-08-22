@@ -17,8 +17,10 @@
             <img src="{{ post.image.url }}" alt="{{ post.title }}" class="blog-image" loading="lazy" decoding="async">
           </picture>
 
-        <h3>{{ post.icon }} <a href="{% url 'blog_detail' post.slug %}" style="text-decoration: none;"></a>
-        {{ post.title }}</h3>
+        
+        <a href="{% url 'blog_detail' post.slug %}" class="blog-title-link" style="text-decoration: none;">
+                <h3>{{ post.title }}</h3>
+              </a>
         <p>{{ post.excerpt|truncatewords:30|safe }}</p>
         <div class="blog-meta">
           <span><i class="uil uil-calendar-alt"></i> {{ post.created_at }}</span>

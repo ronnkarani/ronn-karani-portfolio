@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.text import Truncator
+from django.utils import timezone
 
 # Create your models here.
 class Hero(models.Model):
@@ -104,9 +105,13 @@ class Skill(models.Model):
     icon = models.CharField(max_length=10, help_text="Emoji or Icon")
     category = models.CharField(max_length=100, help_text="Category e.g. Frontend")
     stack = RichTextUploadingField(help_text="Tech stack or description")
-
+    created_at = models.DateTimeField( default=timezone.now,)  
+    
     def __str__(self):
         return f"{self.icon} {self.category}"
+    
+    class Meta:
+        ordering = ['-created_at']
     
 class Comment(models.Model):
     name = models.CharField(max_length=100)

@@ -10,7 +10,6 @@
     <h2 class="project-title">{{ project.title }}</h2>
     <div class="project-meta">
       <span><i class="uil uil-calendar-alt"></i> {{ project.created_at }}</span>
-      <span><i class="uil uil-user"></i> {{ project.author }}</span>
 
       <span><i class="uil uil-eye"></i> {{ project.views }} Views</span> 
       <span>
@@ -54,6 +53,7 @@
     <p>No comments yet.</p>
   {% endfor %}
 
+  
   <h3><i class="uil uil-comment-alt-lines"></i> Leave a Comment!</h3>
   <form method="POST" class="comment-form">
     {% csrf_token %}

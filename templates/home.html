@@ -120,6 +120,7 @@
                 {{ project.title }}
               </a>
               </h3>
+              
               <p>{{ project.description|truncatewords:30|safe }}</p>
               <div class="project-meta">
                 <span><i class="uil uil-eye"></i> {{ project.views }} Views</span> 
@@ -152,16 +153,18 @@
                 <source srcset="{{ post.image|webp }}" type="image/webp">
                 <img src="{{ post.image.url }}" alt="{{ post.title }}" class="blog-image" loading="lazy" decoding="async">
               </picture>
-              <h3><a href="{% url 'blog_detail' post.slug %}" style="text-decoration: none;">
-                {{ post.title }}
-              </a></h3>
+              <a href="{% url 'blog_detail' post.slug %}" class="blog-title-link" style="text-decoration: none;">
+                <h3>{{ post.title }}</h3>
+              </a>
+
+              
               <p>{{ post.excerpt|truncatewords:30|safe }}</p>
               <div class="blog-meta">
-              <span><i class="uil uil-calendar-alt"></i> {{ post.created_at }}</span>
-              <span><i class="uil uil-user"></i> {{ post.author }}</span>
-              <span class="like-count"><i class="uil uil-heart"></i> {{ post.likes }} Likes</span> 
-              <span><i class="uil uil-comment-alt-lines"></i> {{ post.comments.count }} Comments</h3></span>
-            </div>
+                <span><i class="uil uil-calendar-alt"></i> {{ post.created_at }}</span>
+                <span><i class="uil uil-user"></i> {{ post.author }}</span>
+                <span class="like-count"><i class="uil uil-heart"></i> {{ post.likes }} Likes</span> 
+                <span><i class="uil uil-comment-alt-lines"></i> {{ post.comments.count }} Comments</h3></span>
+              </div>
               <a href="{% url 'blog_detail' post.slug %}" target="_blank">Read More</a>
             </div>
           {% empty %}
