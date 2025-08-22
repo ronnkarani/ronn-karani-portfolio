@@ -1080,6 +1080,17 @@ h1 {
   border: 3px solid #58a6ff;
   object-fit: cover;
 }
+/* Stars below image */
+.testimonial-stars {
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.testimonial-stars i {
+  color: #f5c518; /* golden stars */
+  font-size: 1rem;
+  margin: 0 2px;
+}
 
 /* Carousel buttons */
 .carousel-buttons {
